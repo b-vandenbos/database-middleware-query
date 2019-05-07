@@ -14,8 +14,13 @@
   align-items: center;
 }
 
+.login p {
+  font-family: 'Julius Sans One', sans-serif;
+}
+
 .logininput {
   height: 30px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .searchbar {
@@ -31,11 +36,20 @@
 .searchinput {
   width: 40%;
   height: 30px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .searchbutton {
   height: 36px;
   text-transform: uppercase;
+  color: white;
+  background-image: radial-gradient(circle at 50%-46%, #737373, #403D39);
+  border: none;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.searchbutton:focus {
+  outline: 0;
 }
 
 .info-node {
@@ -46,6 +60,7 @@
   border: 1px solid black;
   margin: 10px auto;
   padding: 5px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.2);
 }
 
 .avatar {
@@ -54,6 +69,7 @@
   border-radius: 50%;
   border: 1px solid black;
   margin: 0 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 p {
@@ -65,15 +81,19 @@ p {
   width: 15%;
   text-transform: uppercase;
   letter-spacing: .2em;
+  font-family: 'Julius Sans One', sans-serif;
 }
 
 .content {
   font-weight: 400;
   width: 60%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
 }
 
 .buzzword {
   width: 15%;
   text-align: right;
   margin-right: 10px;
+  font-family: 'Julius Sans One', sans-serif;
 }

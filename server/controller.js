@@ -56,7 +56,7 @@ module.exports = {
 
         //SERVER - REST (queries): student can create a RESTful API (queries)
         if (req.query.buzzword) {
-            let filtered = data.filter(data => data.buzzword === req.query.buzzword);
+            let filtered = data.filter(data => data.buzzword.toLowerCase().includes(req.query.buzzword.toLowerCase()));
             res.status(200).send(filtered);
         }
         else {

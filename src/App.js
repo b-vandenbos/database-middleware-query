@@ -49,7 +49,7 @@ export default class App extends Component {
       <div className="App">
       <div className='container'>
       <div className='login'>
-        {(this.state.user !== '') ? <p>Welcome, {this.state.user}</p> : <p>Please Log In</p>}
+        {(this.state.user !== '') ? <p>Welcome, {this.state.user}.</p> : <p>Please Log In</p>}
         <div>
           <input className='logininput' value={this.state.username} placeholder='username' onChange={(e) => this.setState({username: e.target.value})}/>
           <button className='searchbutton' onClick={() => this.login()}>Login</button>
