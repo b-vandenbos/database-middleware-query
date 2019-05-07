@@ -13,6 +13,7 @@ app.use(session({
 }));
 
 app.post('/login', controller.login);
+app.post('/logout', controller.logout);
 
 //Server - Middleware (Request level)
 app.get('/data', checkForSession, controller.getData);

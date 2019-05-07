@@ -10,11 +10,13 @@ export default class App extends Component {
       search: '',
       username: '',
       user: '',
-      data: []
+      data: [],
+      num: 50
     }
 
     this.getData = this.getData.bind(this);
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +36,11 @@ export default class App extends Component {
     this.getData();
   }
 
+  logout() {
+    axios.post('/logout').then(res => res.data);
+    this.setState({data: [], user: ''});
+  }
+
   render() {
     let info = this.state.data.map(data => {
       return (
@@ -47,23 +54,32 @@ export default class App extends Component {
     })
     return (
       <div className="App">
-      <div className='container'>
-      <div className='login'>
-        {(this.state.user !== '') ? <p>Welcome, {this.state.user}.</p> : <p>Please Log In</p>}
-        <div>
-          <input className='logininput' value={this.state.username} placeholder='username' onChange={(e) => this.setState({username: e.target.value})}/>
-          <button className='searchbutton' onClick={() => this.login()}>Login</button>
+        <div className='container'>
+          <div className='login'>
+            {(this.state.user !== '') ? <p>Welcome, {this.state.user}.</p> : <p>Please Log In</p>}
+            
+              {this.state.user === '' ?
+              <div>
+                <input className='logininput' value={this.state.username} placeholder='username' onChange={(e) => this.setState({username: e.target.value})}/>
+                <button className='searchbutton' onClick={() => this.login()}>Login</button>
+              </div>
+              :
+                <button className='searchbutton' onClick={() => this.logout()}>Logout</button>
+            }
+          </div>
+          {this.state.user !=='' ?
+            <>
+              <div className='searchbar'>
+                  <input className='searchinput' value={this.state.search} placeholder='search for a buzzword' onChange={(e) => this.setState({search: e.target.value})}/>
+                  <button className='searchbutton' onClick={() => this.getData()}>{(this.state.data.length !== 50 && this.state.user !=='') ? 'Clear' : 'Search'}</button>
+              </div>
+              <div className='post-count'>Post Count: {this.state.data.length}</div>
+              <div className='info-container'>
+                {info}
+              </div>
+            </>
+            : null }
         </div>
-      </div>
-        <div className='searchbar'>
-            <input className='searchinput' value={this.state.search} placeholder='search for a buzzword' onChange={(e) => this.setState({search: e.target.value})}/>
-            <button className='searchbutton' onClick={() => this.getData()}>Search</button>
-        </div>
-        <div className='info-container'>
-          {info}
-        </div>
-      </div>
-  
       </div>
     );
   }

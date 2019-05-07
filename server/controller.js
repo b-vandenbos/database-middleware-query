@@ -68,5 +68,10 @@ module.exports = {
         let {username} = req.body;
         req.session.user = username;
         res.status(200).send('User Logged In');
+    },
+
+    logout: (req, res) => {
+        req.session.destroy();
+        res.status(200).send('User Logged Out');
     }
 }
