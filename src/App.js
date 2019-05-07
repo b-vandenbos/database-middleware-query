@@ -59,7 +59,9 @@ export default class App extends Component {
             <input className='searchinput' value={this.state.search} placeholder='search for a buzzword' onChange={(e) => this.setState({search: e.target.value})}/>
             <button className='searchbutton' onClick={() => this.getData()}>Search</button>
         </div>
-        {info}
+        <div className='info-container'>
+          {info}
+        </div>
       </div>
   
       </div>
